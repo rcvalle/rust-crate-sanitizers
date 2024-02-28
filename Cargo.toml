@@ -1,12 +1,12 @@
 [package]
 name = "sanitizers"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2021"
 
 description = "FFI bindings for the sanitizers interfaces"
-homepage = "https://github.com/rcvalle/rust-sanitizers"
+homepage = "https://github.com/rcvalle/rust-crate-sanitizers"
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/rcvalle/rust-sanitizers"
+repository = "https://github.com/rcvalle/rust-crate-sanitizers"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
