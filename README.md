@@ -1,7 +1,7 @@
 sanitizers
 ==========
 
-![Build Status](https://github.com/rcvalle/rust-sanitizers/workflows/build/badge.svg)
+![Build Status](https://github.com/rcvalle/rust-crate-cfi-types/workflows/build/badge.svg)
 
 FFI bindings for the [sanitizers](https://github.com/google/sanitizers)
 interfaces.
@@ -33,9 +33,9 @@ Or:
 Usage
 -----
 
-To use the sanitizers crate:
+To use the `sanitizers` crate:
 
-1. Import a sanitizer module or funtions from the `sanitizers` crate. E.g.:
+1. Import the sanitizer module or funtions from the `sanitizers` crate. E.g.:
 
        use sanitizers::dfsan::*;
 
