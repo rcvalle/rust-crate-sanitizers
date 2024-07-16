@@ -1,7 +1,7 @@
 sanitizers
 ==========
 
-![Build Status](https://github.com/rcvalle/rust-crate-cfi-types/workflows/build/badge.svg)
+![Build Status](https://github.com/rcvalle/rust-crate-sanitizers/workflows/build/badge.svg)
 
 FFI bindings for the [sanitizers](https://github.com/google/sanitizers)
 interfaces.
@@ -22,7 +22,7 @@ Or:
 1. Add the `sanitizers` crate to your package root's `Cargo.toml` file:
 
        [dependencies]
-       sanitizers = "0.0.1"
+       sanitizers = "0.0.4"
 
 2. On a command prompt or terminal with your package root's directory as the
    current working directory, run the following command:
@@ -37,29 +37,31 @@ To use the `sanitizers` crate:
 
 1. Import the sanitizer module or funtions from the `sanitizers` crate. E.g.:
 
-       use sanitizers::dfsan::*;
+       use sanitizers::asan::*;
 
 2. Use the provided interface for the sanitizer. E.g.:
 
        ...
-       let mut i = 1i64;
-       let i_ptr = &mut i as *mut i64;
-       let i_label: dfsan_label = 1;
+       let mut data = vec![0u8; 100];
+       let data_ptr = data.as_mut_ptr() as *const c_void;
+
+       // Poison the memory region
        unsafe {
-           dfsan_set_label(i_label, i_ptr as *mut c_void, size_of::<i64>());
+              __asan_poison_memory_region(data_ptr, data.len());
        }
 
-       let new_label = unsafe { dfsan_get_label(i) };
+       // Check if the memory region is poisoned
+       let is_poisoned = unsafe { __asan_address_is_poisoned(data_ptr) };
+       assert_eq!(is_poisoned, 1);
        ...
 
 3. Build your package with the sanitizer enabled. It is recommended to rebuild
    the standard library with the sanitizer enabled by using the Cargo build-std
    feature (i.e., `-Zbuild-std`) when enabling the sanitizer. E.g.:
 
-       RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld -Zsanitizer=dataflow \
-         -Zsanitizer-dataflow-abilist=/path/to/abilist.txt" \
+       RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld -Zsanitizer=address" \
          cargo build -Zbuild-std -Zbuild-std-features \
-         --target x86_64-unknown-linux
+         --target x86_64-unknown-linux-gnu
 
 
 Contributing
