@@ -1,4 +1,3 @@
-#![allow(non_camel_case_types)]
 /// FFI bindings for the AddressSanitizer interface.
 ///
 /// For more information about AddressSanitizer, see

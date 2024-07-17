@@ -1,4 +1,3 @@
-#![allow(non_camel_case_types)]
 /// FFI bindings for the LeakSanitizer interface.
 ///
 /// For more information about LeakSanitizer, see
