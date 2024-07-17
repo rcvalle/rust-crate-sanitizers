@@ -22,7 +22,7 @@ Or:
 1. Add the `sanitizers` crate to your package root's `Cargo.toml` file:
 
        [dependencies]
-       sanitizers = "0.0.4"
+       sanitizers = "0.0.5"
 
 2. On a command prompt or terminal with your package root's directory as the
    current working directory, run the following command:
