@@ -1,9 +1,9 @@
 [package]
 name = "sanitizers"
-version = "0.0.7"
+version = "0.0.8"
 edition = "2021"
 
-description = "FFI bindings for the sanitizers interfaces"
+description = "Interfaces and FFI bindings for the sanitizers interfaces"
 homepage = "https://github.com/rcvalle/rust-crate-sanitizers"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/rcvalle/rust-crate-sanitizers"
