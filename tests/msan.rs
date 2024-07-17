@@ -1,7 +1,7 @@
 #![feature(cfg_sanitize)]
 
 #[cfg(sanitize = "memory")]
-use sanitizers::msan::*;
+use sanitizers::msan;
 #[cfg(sanitize = "memory")]
 use std::os::raw::c_void;
 
@@ -13,20 +13,16 @@ fn msan_basic() {
     let data_ptr = data.as_mut_ptr() as *const c_void;
 
     // Poison the memory region
-    unsafe {
-        __msan_poison(data_ptr, data.len());
-    }
+    msan::poison(data_ptr, data.len());
 
     // Check if the memory region is poisoned
-    let poisoned_offset = unsafe { __msan_test_shadow(data_ptr, data.len()) };
+    let poisoned_offset = msan::test_shadow(data_ptr, data.len());
     assert_ne!(poisoned_offset, -1);
 
     // Unpoison the memory region
-    unsafe {
-        __msan_unpoison(data_ptr, data.len());
-    }
+    msan::unpoison(data_ptr, data.len());
 
     // Check if the memory region is unpoisoned
-    let unpoisoned_offset = unsafe { __msan_test_shadow(data_ptr, data.len()) };
+    let unpoisoned_offset = msan::test_shadow(data_ptr, data.len());
     assert_eq!(unpoisoned_offset, -1);
 }
