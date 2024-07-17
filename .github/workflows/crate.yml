@@ -27,6 +27,8 @@ jobs:
           RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld -Zsanitizer=dataflow -Zsanitizer-dataflow-abilist=${PWD}/resources/abilist.txt" cargo build -Zbuild-std -Zbuild-std-features --target x86_64-unknown-linux-gnu --verbose
           RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld -Zsanitizer=dataflow -Zsanitizer-dataflow-abilist=${PWD}/resources/abilist.txt" cargo test -Zbuild-std -Zbuild-std-features --target x86_64-unknown-linux-gnu --verbose
           rm ./resources/abilist.txt
+          RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld -Zsanitizer=leak -Zexport-executable-symbols" cargo build -Zbuild-std -Zbuild-std-features --target x86_64-unknown-linux-gnu --verbose
+          RUSTFLAGS="-Clinker=clang -Clink-arg=-fuse-ld=lld -Zsanitizer=leak -Zexport-executable-symbols" cargo test -Zbuild-std -Zbuild-std-features --target x86_64-unknown-linux-gnu --verbose
 
       - name: Publish to crates.io
         env:
