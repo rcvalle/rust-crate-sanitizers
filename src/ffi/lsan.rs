@@ -3,7 +3,7 @@
 ///
 /// For more information about LeakSanitizer, see
 /// https://clang.llvm.org/docs/LeakSanitizer.html.
-use std::os::raw::{c_char, c_int, c_void};
+use std::os::raw::{c_int, c_void};
 
 extern "C" {
     /// Allocations made between calls to __lsan_disable() and __lsan_enable() will
