@@ -3,8 +3,8 @@ sanitizers
 
 ![Build Status](https://github.com/rcvalle/rust-crate-sanitizers/workflows/build/badge.svg)
 
-FFI bindings for the [sanitizers](https://github.com/google/sanitizers)
-interfaces.
+Interfaces and FFI bindings for the
+[sanitizers](https://github.com/google/sanitizers) interfaces.
 
 
 Installation
@@ -22,7 +22,7 @@ Or:
 1. Add the `sanitizers` crate to your package root's `Cargo.toml` file:
 
        [dependencies]
-       sanitizers = "0.0.7"
+       sanitizers = "0.0.8"
 
 2. On a command prompt or terminal with your package root's directory as the
    current working directory, run the following command:
