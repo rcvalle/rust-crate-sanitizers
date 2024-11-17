@@ -1,6 +1,6 @@
 [package]
 name = "sanitizers"
-version = "0.0.8"
+version = "0.0.9"
 edition = "2021"
 
 description = "Interfaces and FFI bindings for the sanitizers interfaces"
